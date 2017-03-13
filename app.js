@@ -18,9 +18,11 @@ app.use(express.static(path.join(__dirname,'src/statics')))
 
 //导出路由
 const accountRouter=require(path.join(__dirname,'src/routes/accountRouter.js'))
+const studentManagerRouter=require(path.join(__dirname,'src//routes/studentManagerRouter.js'))
 //登录页面 路由入口
 app.use('/account',accountRouter)
-
+//处理学生管理系统的路由
+app.use('/studentmanager',studentManagerRouter)
 
 
 //启动服务器

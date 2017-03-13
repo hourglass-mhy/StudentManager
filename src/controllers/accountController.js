@@ -20,7 +20,7 @@ exports.getLoginPage=(req,res)=>{
 }
 //该方法负责获取登录提交的用户信息  查询数据库
 exports.getLogin=(req,res)=>{
-  console.log(req.body)//获取表单提交的数据
+  //console.log(req.body)//获取表单提交的数据
   //连接数据库,查询用户是否存在
   MongoClient.connect(url, function(err, db) {
      const collection = db.collection('account')
@@ -29,7 +29,7 @@ exports.getLogin=(req,res)=>{
         pwd:req.body.pwd
       }).toArray(function(err, docs) {
        if(docs.length!=0) { //找到数据  跳转到学生管理系统
-         res.end('login ok')
+         res.end("<script>window.location.href='/studentmanager/list'</script>")
        }else {  //没有找到数据  跳转到登录页面,给予提示信息 返回一段js脚本,浏览器解析执行
         res.end("<script>alert('用户名或者密码不正确');window.location.href='/account/login';</script>")
        }
