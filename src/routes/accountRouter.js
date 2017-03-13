@@ -10,6 +10,9 @@ const accountRouter=express.Router()
 const accountController=require(path.join(__dirname,'../controllers/accountController.js'))
 //获取登录页面
 accountRouter.get('/login',accountController.getLoginPage)
+//获取登录信息,查询数据库进行匹配 post提交
+accountRouter.post('/login',accountController.getLogin)
+
 
 //导出模块
 module.exports=accountRouter

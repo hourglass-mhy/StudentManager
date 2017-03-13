@@ -5,6 +5,12 @@ const express=require('express')
 const app=express()
 const path=require('path')
 
+const bodyParser=require('body-parser')
+// parse application/x-www-form-urlencoded 
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json 
+app.use(bodyParser.json())
+
 //处理静态资源
 app.use(express.static(path.join(__dirname,'src/statics')))
 
@@ -12,8 +18,9 @@ app.use(express.static(path.join(__dirname,'src/statics')))
 
 //导出路由
 const accountRouter=require(path.join(__dirname,'src/routes/accountRouter.js'))
-//账户路由入口
+//登录页面 路由入口
 app.use('/account',accountRouter)
+
 
 
 //启动服务器
